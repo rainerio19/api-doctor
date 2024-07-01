@@ -1,7 +1,7 @@
 import { Get, Query } from '@nestjs/common';
 import { Controller, HttpCode } from '@nestjs/common';
-import { ZodValidationPipe } from 'src/pipe/zod-validation-pipe';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { ZodValidationPipe } from '@/pipe/zod-validation-pipe';
+import { PrismaService } from '@/prisma/prisma.service';
 import { z } from 'zod';
 
 const pageQueryParamSchema = z
@@ -20,7 +20,7 @@ export class FetchAllDoctorsController {
 	constructor(private prisma: PrismaService) {}
 
 	@Get('/doctors')
-	@HttpCode(201)
+	@HttpCode(200)
 	async handle(@Query('page', queryValidationPipe) page: PageQueryParamSchema) {
 		const perPage = 10;
 

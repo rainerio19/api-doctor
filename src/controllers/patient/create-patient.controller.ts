@@ -1,13 +1,13 @@
 import { ConflictException, UsePipes } from '@nestjs/common';
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
-import { ZodValidationPipe } from 'src/pipe/zod-validation-pipe';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { ZodValidationPipe } from '@/pipe/zod-validation-pipe';
+import { PrismaService } from '@/prisma/prisma.service';
 import { z } from 'zod';
 
 const createPatientBodySchema = z.object({
 	name: z.string(),
 	cpf: z.string(),
-	dateBirth: z.string().datetime(),
+	dateBirth: z.string().date(),
 });
 
 type CreatePatientBodySchema = z.infer<typeof createPatientBodySchema>;
