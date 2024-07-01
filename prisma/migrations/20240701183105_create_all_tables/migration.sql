@@ -3,7 +3,7 @@ CREATE TABLE "patients" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
-    "date_birth" TIMESTAMP(3) NOT NULL,
+    "date_birth" TEXT NOT NULL,
 
     CONSTRAINT "patients_pkey" PRIMARY KEY ("id")
 );
@@ -14,6 +14,8 @@ CREATE TABLE "doctors" (
     "name" TEXT NOT NULL,
     "crm" TEXT NOT NULL,
     "specialty" TEXT NOT NULL,
+    "start_expedient" TEXT NOT NULL,
+    "end_expedient" TEXT NOT NULL,
 
     CONSTRAINT "doctors_pkey" PRIMARY KEY ("id")
 );
@@ -22,6 +24,7 @@ CREATE TABLE "doctors" (
 CREATE TABLE "consults" (
     "id" TEXT NOT NULL,
     "consultation_date" TIMESTAMP(3) NOT NULL,
+    "duration" INTEGER NOT NULL,
     "patient_id" TEXT NOT NULL,
     "doctor_id" TEXT NOT NULL,
 

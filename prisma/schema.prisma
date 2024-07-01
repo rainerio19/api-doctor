@@ -11,18 +11,20 @@ model Patient {
   id        String    @id @default(uuid())
   name      String
   cpf       String    @unique
-  dateBirth DateTime  @map("date_birth")
+  dateBirth String    @map("date_birth")
   consults  Consult[]
 
   @@map("patients")
 }
 
 model Doctor {
-  id        String    @id @default(uuid())
-  name      String
-  crm       String    @unique
-  specialty String
-  consults  Consult[]
+  id             String    @id @default(uuid())
+  name           String
+  crm            String    @unique
+  specialty      String
+  startExpedient String    @map("start_expedient")
+  endExpedient   String    @map("end_expedient")
+  consults       Consult[]
 
   @@map("doctors")
 }
@@ -30,6 +32,7 @@ model Doctor {
 model Consult {
   id               String   @id @default(uuid())
   consultationDate DateTime @map("consultation_date")
+  duration         Int // duração em minutos
 
   patient   Patient @relation(fields: [patientId], references: [id])
   patientId String  @map("patient_id")
